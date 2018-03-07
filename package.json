@@ -1,0 +1,11 @@
+{
+  "name": "qiscus-ui-jquery",
+  "version": "1.0.0",
+  "description": "A chat widget UI built on top of jquery and qiscus-sdk-core",
+  "main": "index.js",
+  "author": "qiscus <contact.us@qiscus.com>",
+  "license": "MIT",
+  "dependencies": {
+    "qiscus-sdk-core": "git://github.com/qiscus/qiscus-sdk-web-core.git"
+  }
+}
