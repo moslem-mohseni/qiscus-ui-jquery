@@ -33,8 +33,9 @@ ul.qcw-comments li { display: flex; padding: 0 15px; margin-bottom: 5px; }
 .qcw-comment__message.qcw-comment__message--me .qcw-comment__bubble { order: 2; }
 .qcw-comment__message.qcw-comment__message--me .qcw-comment__meta { order: 1; }
 .qcw-comment__message.qcw-comment__message--me .qcw-comment__bubble { background: #F8EFBA; color: #444; }
-
+.qcw-comment__text { word-break: break-all; white-space: pre-line; }
+.qcw-image-attachment { max-height: 100px; max-width: 200px; cursor: -webkit-zoom-in; }
 /* comment form */
 .qcw-comment-form { padding: 10px 10px; display: flex; background: #ecf0f1; box-shadow: inset 0 3px 15px rgba(0,0,0,.15); display: flex; justify-content: space-between; align-items: center; }
-.qcw-comment-form textarea { background: #FFF; border: 1px solid #ddd; border-radius: 15px; flex: 1; outline: none; }
+.qcw-comment-form textarea { background: #FFF; border: 1px solid #ddd; border-radius: 3px; flex: 1; outline: none; }
 .qcw-comment-form i { margin-left: 10px; }
