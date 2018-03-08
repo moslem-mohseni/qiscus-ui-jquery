@@ -93,6 +93,11 @@ function renderComment(comment, commentBefore) {
     const isImage    =  isFile && ['jpg','gif','jpeg','png'].includes(messageURI.split('.').pop().toLowerCase());
     commentMessage = `<a class="lightbox" href="${messageURI}"><img src="${messageURI}" class="qcw-image-attachment" /></a>`
   }
+  // If it's not a file type, means that it's text type
+  // let's check whether it's a reply
+  if(comment.type == 'reply') {
+    commentMessage = `<div class="qcw-reply-preview"><small>${comment.payload.replied_comment_sender_username}</small>${comment.payload.replied_comment_message}</div>${comment.payload.text}`;
+  }
   let commentClass = `qcw-comment__message`;
   if(isMe) commentClass += ` qcw-comment__message--me`;
   if(isTop) commentClass += ` qcw-comment__message--top`;
