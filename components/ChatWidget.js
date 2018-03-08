@@ -7,6 +7,10 @@ export default function ChatWidget() {
       <ul class="qcw-comments"></ul>
       <div class="qcw-comment-form">
         <textarea></textarea>
+        <label class="qcw-upload-btn">
+          <i class="material-icons">attach_file</i>
+          <input type="file" class="qcw-uploader-input">
+        </label>
         <i class="material-icons send-btn">send</i>
       </div>
     </div>

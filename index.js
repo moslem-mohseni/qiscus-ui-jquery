@@ -50,6 +50,14 @@ $(function(){
     $.colorbox({href:$(this).attr('href'), open:true});
     return false;
   });
+
+  // file uploading
+  $('#qiscus-widget').on('click', '.qcw-upload-btn', function(){
+    $('.qcw-uploader-input').val('');
+  });
+  $('#qiscus-widget').on('change', '.qcw-uploader-input', function(e){
+    uploadFile(e);
+  })
 });
 
 function loginSuccessCallback() {
@@ -91,7 +99,14 @@ function renderComment(comment, commentBefore) {
   if(isFile) {
     const messageURI =  comment.message.substring(6,comment.message.length-7).trim();
     const isImage    =  isFile && ['jpg','gif','jpeg','png'].includes(messageURI.split('.').pop().toLowerCase());
-    commentMessage = `<a class="lightbox" href="${messageURI}"><img src="${messageURI}" class="qcw-image-attachment" /></a>`
+    if(isImage) {
+      commentMessage = `<a class="lightbox" href="${messageURI}"><img src="${messageURI}" class="qcw-image-attachment" /></a>`;
+    } else {
+      commentMessage = `<div class="qcw-attachment">
+        <i class="material-icons">description</i>
+        <a href="${messageURI}" target="_blank">${messageURI}</a>
+      </div>`;
+    }
   }
   // If it's not a file type, means that it's text type
   // let's check whether it's a reply
@@ -117,4 +132,12 @@ function renderComment(comment, commentBefore) {
 
 function scrollToBottom() {
   $('ul.qcw-comments').scrollTop(9999);
+}
+
+function uploadFile(e) {
+  const files    = e.target.files || e.dataTransfer.files;
+  const roomId   = qiscus.selected.id;
+
+  qiscus.addUploadedFile(files[0].name, roomId);
+  return qiscus.uploadFile(roomId, files[0]);
 }
